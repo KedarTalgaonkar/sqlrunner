@@ -1,0 +1,37 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  security:
+    user:
+        name: admin
+        password: admin
+
+  datasource:
+    hikari:
+      pool-name: DynamicHikariPool
+
+    oracle:
+      enabled: false   # Enable when you want Oracle
+      jdbc-url: jdbc:oracle:thin:@//your-host:1521/your-service
+      username: your-username
+      password: your-password
+      driver-class-name: oracle.jdbc.OracleDriver
+
+    mariadb:
+      enabled: true   # Enable when you want MariaDB
+      jdbc-url: jdbc:mariadb://127.0.0.1:3306/rt_system
+      username: root
+      password: root
+      driver-class-name: org.mariadb.jdbc.Driver
+
+    h2:
+      enabled: true   # Auto-enabled if both Oracle and MariaDB are false
+      jdbc-url: jdbc:h2:mem:testdb
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+
+server:
+  port: 8180
