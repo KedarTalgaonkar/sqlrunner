@@ -1,8 +1,10 @@
-package com.eeft.renaissance.sqlrunner.exception;
+package com.eeft.ren.sqlrunner.exception;
 
 public class SqlExecutionException extends RuntimeException {
 
-    public SqlExecutionException(String message) {
+	private static final long serialVersionUID = 4521714444621182018L;
+
+	public SqlExecutionException(String message) {
         super(message);
     }
 

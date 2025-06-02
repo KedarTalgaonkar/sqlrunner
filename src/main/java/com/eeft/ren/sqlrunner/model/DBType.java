@@ -1,4 +1,4 @@
-package com.eeft.renaissance.sqlrunner.model;
+package com.eeft.ren.sqlrunner.model;
 
 public enum DBType {
     ORACLE,

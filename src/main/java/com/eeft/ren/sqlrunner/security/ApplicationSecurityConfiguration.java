@@ -1,4 +1,4 @@
-package com.eeft.renaissance.sqlrunner.security;
+package com.eeft.ren.sqlrunner.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

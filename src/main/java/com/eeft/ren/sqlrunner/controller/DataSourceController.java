@@ -1,10 +1,10 @@
-package com.eeft.renaissance.sqlrunner.controller;
+package com.eeft.ren.sqlrunner.controller;
 
-import com.eeft.renaissance.sqlrunner.dao.CustomDbExecutorDao;
-import com.eeft.renaissance.sqlrunner.exception.SqlExecutionException;
-import com.eeft.renaissance.sqlrunner.model.DBType;
-import com.eeft.renaissance.sqlrunner.model.DataSourceRequest;
-import com.eeft.renaissance.sqlrunner.service.DynamicSqlExecutionService;
+import com.eeft.ren.sqlrunner.dao.CustomDbExecutorDao;
+import com.eeft.ren.sqlrunner.exception.SqlExecutionException;
+import com.eeft.ren.sqlrunner.model.DBType;
+import com.eeft.ren.sqlrunner.model.DataSourceRequest;
+import com.eeft.ren.sqlrunner.service.DynamicSqlExecutionService;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class DataSourceController {
         this.executionService = executionService;
     }
 
-        @PostMapping("/create")
+    @PostMapping("/create")
     public String createDataSource(@RequestBody DataSourceRequest request) {
         try {
             String fullJdbcUrl = buildJdbcUrl(

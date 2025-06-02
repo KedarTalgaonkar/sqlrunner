@@ -1,18 +1,21 @@
-package com.eeft.renaissance.sqlrunner.parser;
+package com.eeft.ren.sqlrunner.parser;
 
-import com.eeft.renaissance.sqlrunner.model.DBType;
-import com.eeft.renaissance.sqlrunner.model.ExecutionResponse;
-import com.eeft.renaissance.sqlrunner.service.DynamicSqlExecutionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.eeft.ren.sqlrunner.model.DBType;
+import com.eeft.ren.sqlrunner.model.ExecutionResponse;
+import com.eeft.ren.sqlrunner.service.DynamicSqlExecutionService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -30,14 +33,14 @@ public class SqlBatchProcessor {
         File dir = new File(directoryPath);
         if (!dir.isDirectory()) {
             logger.error("Provided path '{}' is not a directory.", directoryPath);
-            return null;
+            return Collections.emptyList();
         }
 
         File[] sqlFiles = dir.listFiles((d, name) -> name.toLowerCase().endsWith(".sql"));
 
         if (sqlFiles == null || sqlFiles.length == 0) {
             logger.info("No SQL files found in the directory '{}'.", directoryPath);
-            return null;
+            return Collections.emptyList();
         }
 
         // Sort files alphabetically

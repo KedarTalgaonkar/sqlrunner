@@ -1,4 +1,4 @@
-package com.eeft.renaissance.sqlrunner.dao;
+package com.eeft.ren.sqlrunner.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,18 +9,12 @@ import org.springframework.stereotype.Repository;
 import javax.sql.DataSource;
 
 @Repository
-@ConditionalOnProperty(name = "spring.datasource.h2.enabled", havingValue = "true")
-public class H2DbExecutorDao {
-
-    private final JdbcTemplate jdbcTemplate;
+@ConditionalOnProperty(name = "spring.datasource.mariadb.enabled", havingValue = "true")
+public class MariaDbExecutorDao extends ExecutorDao{
 
     @Autowired
-    public H2DbExecutorDao(@Qualifier("h2DataSource") DataSource mariaDbDataSource) {
+    public MariaDbExecutorDao(@Qualifier("mariadbDataSource") DataSource mariaDbDataSource) {
         this.jdbcTemplate = new JdbcTemplate(mariaDbDataSource);
-    }
-
-    public void executeStatement(String sql) {
-        jdbcTemplate.execute(sql);
     }
 }
 
