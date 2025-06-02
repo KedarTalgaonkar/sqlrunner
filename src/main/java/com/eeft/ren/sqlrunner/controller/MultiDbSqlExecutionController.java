@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.eeft.ren.sqlrunner.config.PathUtil;
 import com.eeft.ren.sqlrunner.model.DBType;
 import com.eeft.ren.sqlrunner.model.ExecutionResponse;
 import com.eeft.ren.sqlrunner.parser.SqlBatchProcessor;
@@ -36,10 +37,13 @@ public class MultiDbSqlExecutionController {
 
     @PostMapping(value = "/executeFromPath")
     public ResponseEntity<List<ExecutionResponse>> executeSqlScriptFromPath(
-            @RequestParam("dbType") DBType dbType) {
-        System.out.println("executeSqlScriptFromPath");
-        List<ExecutionResponse> response = sqlBatchProcessor.executeSqlFile(dbType);
+            @RequestParam("dbType") DBType dbType,
+            @RequestParam(value = "path", required = false) String requestPath) {
+        
+        String dbPath = PathUtil.getPath(requestPath);
+        List<ExecutionResponse> response = sqlBatchProcessor.executeSqlFolder(dbType, dbPath);
         return ResponseEntity.ok(response);
     }
+
 }
 

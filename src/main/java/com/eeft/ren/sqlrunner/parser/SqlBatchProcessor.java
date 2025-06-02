@@ -29,7 +29,7 @@ public class SqlBatchProcessor {
         this.executionService = executionService;
     }
 
-    public List<ExecutionResponse> processSqlFiles(String directoryPath, DBType dbType ) {
+    public List<ExecutionResponse> processSqlFiles(DBType dbType, String directoryPath ) {
         File dir = new File(directoryPath);
         if (!dir.isDirectory()) {
             logger.error("Provided path '{}' is not a directory.", directoryPath);
@@ -85,8 +85,7 @@ public class SqlBatchProcessor {
         return response;
     }
 
-    public List<ExecutionResponse> executeSqlFile(DBType dbType) {
-        String directoryPath = "C:\\Users\\ktalgaonkar\\Downloads\\resp";
-        return processSqlFiles(directoryPath, dbType);
+    public List<ExecutionResponse> executeSqlFolder(DBType dbType, String requestPath) {
+        return processSqlFiles( dbType, requestPath);
     }
 }
